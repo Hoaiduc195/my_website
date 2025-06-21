@@ -39,10 +39,76 @@ html{
     overflow: auto;
 }
 
-#formgetter{
+#formGetter{
     margin-top: 10px;
     background-color:#3498db;
     color: white;
     font-size: medium;
     padding: 10px 0 0 20px;
+}
+
+#messageForm {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#messageForm label {
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+    width: 100%;
+}
+
+#messageForm input[type="text"],
+#messageForm textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+#messageForm input[type="text"]:focus,
+#messageForm textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+#messageForm textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#messageForm input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: center;
+    margin-top: 10px;
+}
+
+#messageForm input[type="submit"]:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+#messageForm input[type="submit"]:active {
+    transform: translateY(0);
+    background-color: #1e7e34;
 }

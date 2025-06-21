@@ -35,26 +35,79 @@
     </div>
 
     <!--Form section-->
-    <div id="formgetter">
-        <h3>You can send me anything through this</h3>
-        <form
-            action="mailto:hoaiducduong19@gmail.com?subject=Message%20from%20My%20Website&body=Name:%20%0AEmail:%20%0AMessage:%20"
-            method="post" enctype="text/plain">
-            <div class="form-group">
-                <label for="visitor-name">Your Name:</label>
-                <input type="text" id="visitor-name" name="Name" placeholder="Enter your name" required>
-            </div>
-            <div class="form-group">
-                <label for="visitor-email">Your Email:</label>
-                <input type="email" id="visitor-email" name="Email" placeholder="your.email@example.com" required>
-            </div>
-            <div class="form-group">
-                <label for="visitor-message">Your Message:</label>
-                <textarea id="visitor-message" name="Message" rows="8" placeholder="Type your message here..."
-                    required></textarea>
-            </div>
-            <button type="submit">Send Message via Email</button>
+    <div id="formGetter">
+        <h2>You can send anything to me here</h2>
+        <form id="messageForm">
+            <label for="username">Your name:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <input type="submit" value="Send Message">
         </form>
+
+        <div id="messages-container">
+            <h2>Received Messeage</h2>
+            <div id="message-list">
+                <p>Loading</p>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById('messageForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const username = document.getElementById('username').value;
+                const message = document.getElementById('message').value;
+
+                fetch('send_message.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `username=${encodeURIComponent(username)}&message=${encodeURIComponent(message)}`
+                })
+                    .then(response => response.text())
+                    .then(data => {
+                        alert(data);
+                        document.getElementById('messageForm').reset();
+                        loadMessages();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Can not send message.');
+                    });
+            });
+
+            function loadMessages() {
+                fetch('get_messages.php')
+                    .then(response => response.json())
+                    .then(messages => {
+                        const messageList = document.getElementById('message-list');
+                        messageList.innerHTML = '';
+
+                        if (messages.length === 0) {
+                            messageList.innerHTML = '<p>No message.</p>';
+                            return;
+                        }
+
+                        messages.forEach(msg => {
+                            const messageItem = document.createElement('div');
+                            messageItem.classList.add('message-item');
+                            messageItem.innerHTML = `
+                            <strong>${msg.username}</strong> <span>(${msg.timestamp})</span><br>
+                            ${msg.message}
+                        `;
+                            messageList.appendChild(messageItem);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        document.getElementById('message-list').innerHTML = '<p>Can not load message.</p>';
+                    });
+            }
+
+            document.addEventListener('DOMContentLoaded', loadMessages);
+            setInterval(loadMessages, 5000); 
+        </script>
     </div>
 
 </body>

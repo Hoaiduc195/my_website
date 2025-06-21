@@ -1,0 +1,40 @@
+html{
+    background-color: aquamarine;
+}
+.navbar{
+    background-color:black;
+    color: white;
+}
+
+.navbar ul{
+    display: flex;
+    list-style: none;
+}
+.navbar li{
+    margin: 0 5px;
+}
+
+.navbar a{
+    background-color: grey;
+    color: aliceblue;
+    padding: 10px;
+    display: flex;
+    outline: dotted;
+}
+
+#avatar{
+    display: block;
+    margin: auto;
+}
+
+#introduction{
+    background-color: bisque;
+    font-style: italic;
+    padding: 1rem;
+    color:darkblue;
+}
+
+#introduction p h1{
+    
+}
+

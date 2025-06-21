@@ -1,6 +1,6 @@
 html{
-    background-color: aquamarine;
-}
+    font-family:'Oswald';
+} 
 .navbar{
     background-color:black;
     color: white;
@@ -10,31 +10,33 @@ html{
     display: flex;
     list-style: none;
 }
-.navbar li{
-    margin: 0 5px;
-}
 
 .navbar a{
-    background-color: grey;
+    background-color: #2980b9;
     color: aliceblue;
     padding: 10px;
     display: flex;
-    outline: dotted;
+    transition: background-color 0.3s
+}
+
+.navbar a:hover{
+    background-color: #ecf0f1;
+    color: black;
 }
 
 #avatar{
-    display: block;
-    margin: auto;
+    float: right;
+    border-radius: 50%;
+    margin: 10px;
+    width: 200px;
 }
 
-#introduction{
-    background-color: bisque;
-    font-style: italic;
-    padding: 1rem;
-    color:darkblue;
-}
-
-#introduction p h1{
-    
+#herosection{
+    background-color: #3498db;
+    padding: 10px 10px 10px 10px;
+    color: white;
+    font-style: oblique;
+    font-size: larger;
+    overflow: auto;
 }
 

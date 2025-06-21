@@ -33,10 +33,16 @@ html{
 
 #herosection{
     background-color: #3498db;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 20px;
     color: white;
-    font-style: oblique;
     font-size: larger;
     overflow: auto;
 }
 
+#formgetter{
+    margin-top: 10px;
+    background-color:#3498db;
+    color: white;
+    font-size: medium;
+    padding: 10px 0 0 20px;
+}
